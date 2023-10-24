@@ -7,20 +7,20 @@ const AuthView = () => {
         NICE TO SEE YOU!
       </h1>
       <form>
-        <div className="rounded-lg bg-orange-600 p-5 mb-5 flex">
+        <div className="rounded-lg bg-appOrange p-5 mb-5 flex">
           <label className="mx-4 font-bold">Username</label>
-          <input className="w-3/5 rounded-lg" type="text" />
+          <input className="w-3/5 rounded-lg text-black" type="text" />
         </div>
-        <div className="rounded-lg bg-orange-600 p-5 mb-20 flex">
+        <div className="rounded-lg bg-appOrange p-5 mb-20 flex">
           <label className="mx-4 font-bold">Password</label>
-          <input className="w-3/5 rounded-lg" type="password" />
+          <input className="w-3/5 rounded-lg text-black" type="password" />
         </div>
-        <div className="rounded-lg bg-orange-600 p-8 mb-5 flex justify-center items-center">
+        <div className="rounded-lg bg-appOrange p-8 mb-5 flex justify-center items-center">
           <button className="text-white text-3xl font-semibold">Login</button>
         </div>
       </form>
       <Link href='/'>
-        <button className="bg-orange-600 rounded-lg mt-3 px-6 font-semibold">
+        <button className="bg-appOrange rounded-lg mt-3 px-6 font-semibold">
           Back
         </button>
       </Link>

@@ -6,8 +6,9 @@ const HomePage = () => {
   return (
     <>
       <h1>HomePage</h1>
-        <Link href='/inputview'> inputview</Link>
-        <Link href='/authview'> authview</Link>
+      <Link href='/authview'> authview</Link>
+      <Link href='/downloadview'> downloadview</Link>
+      <Link href='/inputview'> inputview</Link>
     </>
   )
 }
