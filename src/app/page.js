@@ -1,9 +1,15 @@
-import React from 'react'
+
+import Link from "next/link"
+
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <>
+      <h1>HomePage</h1>
+        <Link href='/inputview'> inputview</Link>
+        <Link href='/authview'> authview</Link>
+    </>
   )
 }
-
 export default HomePage
+
