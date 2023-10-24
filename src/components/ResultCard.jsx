@@ -1,17 +1,20 @@
 import Link from "next/link";
 
 const ResultCard = ({ result }) => {
-  console.log(result);
   const { date } = result;
   return (
-    <div className="flex justify-around  hover:bg-orange-400 md:text-2xl">
-        <p>
-          {result.id}. {result.date}
-        </p>
-        <Link href="/01-09-2023.pdf" target="_blank" download="01-09-2023.pdf">
-          Download
-        </Link>
-    </div>
+    <Link
+      href="/01-09-2023.pdf"
+      target="_blank"
+      download="01-09-2023.pdf"
+      className="flex justify-around md:grid md:grid-cols-6 hover:bg-orange-400 md:text-2xl"
+    >
+      <p className="col-start-3 col-end-4">
+        {result.id}. {date}
+      </p>
+      <p>Download</p>
+    </Link>
+    // </div>
   );
 };
 
