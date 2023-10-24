@@ -6,6 +6,7 @@ const HomePage = () => {
     <>
       <h1>HomePage</h1>
     <Link href='/authview'> authview</Link>
+    <Link href='/downloadview'> downloadview</Link>
     </>
   )
 }
