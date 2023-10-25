@@ -9,9 +9,9 @@ const ResultPage = () => {
     { id: 4, date: "01/10/2023" },
   ];
   return (
-    <div className="md:flex md:flex-col  text-center  mx-2 my-4 md:my-10">
+    <main className="md:flex md:flex-col  text-center   my-4 md:my-10">
       <h1 className="text-5xl p-4 mb-6 text-center">Hi Marco!</h1>
-      <div className=" bg-orange-600 text-3xl md:mx-auto font-extrabold p-6">
+      <div className=" bg-appOrange text-3xl md:mx-auto font-extrabold py-6">
         <h2 className="mb-4">Check your</h2>
         <h2 className="text-gray-900 ">History</h2>
       </div>
@@ -25,11 +25,11 @@ const ResultPage = () => {
       </ul>
       <Link
         href="/"
-        className="bg-orange-600 mx-auto text-gray-900 py-1 px-8 rounded-lg text-center hover:bg-orange-400 md:text-2xl md:px-12 md:py-4"
+        className="bg-appOrange mx-auto text-gray-900 py-1 px-8 rounded-lg text-center hover:bg-orange-400 md:text-2xl md:px-12 md:py-4"
       >
         Back
       </Link>
-    </div>
+    </main>
   );
 };
 

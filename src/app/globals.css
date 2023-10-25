@@ -3,10 +3,7 @@
 @tailwind utilities;
 
 body{
-    @apply bg-zinc-950;
-    @apply text-gray-50;
-    background-color: black;
-    color: white;
+    min-height: 100svh;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
