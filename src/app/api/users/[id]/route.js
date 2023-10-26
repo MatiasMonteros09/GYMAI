@@ -12,7 +12,7 @@ export async function GET(request, { params }) {
 
 export async function PUT(request, { params }) {
   const data = await request.json();
-  
+
   const userUpdated = await prisma.user.update({
     where: {
       id: Number(params.id),
