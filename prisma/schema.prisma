@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id         Int @id @default(autoincrement())
+  name       String
+  lastname   String
+  password   String
+  email      String 
+  created_at DateTime @default(now())
+  routine   Routine[]
+}
+
+model Routine {
+  id         Int  @id @default(autoincrement())
+  init       DateTime
+  creator    User @relation(fields: [creator_id], references: [id])
+  creator_id Int
+  body_part  Body_Part?
+  objetive   Objetive?
+}
+
+model Body_Part{
+  id         Int  @id @default(autoincrement())
+  name       String
+  routine    Routine @relation(fields: [routine_id], references: [id])
+  routine_id Int  @unique // relation scalar field (used in the `@relation` attribute above)
+}
+
+model Objetive{
+  id          Int  @id @default(autoincrement())
+  description String
+  routine    Routine @relation(fields: [routine_id], references: [id])
+  routine_id Int  @unique // relation scalar field (used in the `@relation` attribute above)
+}
