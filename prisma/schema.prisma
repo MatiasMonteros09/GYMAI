@@ -27,26 +27,26 @@ model Routine {
   init       DateTime
   creator    User @relation(fields: [creatorId], references: [id])
   creatorId  Int @map("creator_id")
-  body_part  Body_Part?
+  body_part  BodyPart?
   objetive   Objetive?
 
   @@map("routine")
 }
 
-model Body_Part{
+model BodyPart{
   id         Int  @id @default(autoincrement())
   name       String
-  routine    Routine @relation(fields: [routine_id], references: [id])
-  routine_id Int  @unique // relation scalar field (used in the `@relation` attribute above)
+  routine    Routine @relation(fields: [routineId], references: [id])
+  routineId Int  @unique @map("routine_id") // relation scalar field (used in the `@relation` attribute above)
 
- @@map("bodyPart") 
+ @@map("body_part") 
 }
 
 model Objetive{
   id          Int  @id @default(autoincrement())
   description String
-  routine    Routine @relation(fields: [routine_id], references: [id])
-  routine_id Int  @unique // relation scalar field (used in the `@relation` attribute above)
+  routine    Routine @relation(fields: [routineId], references: [id])
+  routineId Int  @unique @map("routine_id") // relation scalar field (used in the `@relation` attribute above)
 
   @@map("objetive")
 }
