@@ -16,17 +16,21 @@ model User{
   lastname   String
   password   String
   email      String 
-  created_at DateTime @default(now())
+  createdAt  DateTime @default(now()) @map("created_at")
   routine   Routine[]
+
+  @@map("user")
 }
 
 model Routine {
   id         Int  @id @default(autoincrement())
   init       DateTime
-  creator    User @relation(fields: [creator_id], references: [id])
-  creator_id Int
+  creator    User @relation(fields: [creatorId], references: [id])
+  creatorId  Int @map("creator_id")
   body_part  Body_Part?
   objetive   Objetive?
+
+  @@map("routine")
 }
 
 model Body_Part{
@@ -34,6 +38,8 @@ model Body_Part{
   name       String
   routine    Routine @relation(fields: [routine_id], references: [id])
   routine_id Int  @unique // relation scalar field (used in the `@relation` attribute above)
+
+ @@map("bodyPart") 
 }
 
 model Objetive{
@@ -41,4 +47,6 @@ model Objetive{
   description String
   routine    Routine @relation(fields: [routine_id], references: [id])
   routine_id Int  @unique // relation scalar field (used in the `@relation` attribute above)
+
+  @@map("objetive")
 }
