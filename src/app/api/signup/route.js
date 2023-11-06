@@ -3,10 +3,12 @@ import { db } from "@/libs/db";
 import { hash } from "bcrypt";
 
 export async function GET() {
-  const users = await user.findMany();
+  const users = await db.user.findMany();
 
   return NextResponse.json(users);
 }
+
+
 
 export async function POST(request) {
   try {
@@ -15,6 +17,8 @@ export async function POST(request) {
     const existingUserByEmail = await db.user.findUnique({
       where: { email: email },
     });
+
+    
 
     //Contola si ya existe email
     if (existingUserByEmail) {
