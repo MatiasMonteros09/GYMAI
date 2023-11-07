@@ -19,7 +19,7 @@ const AuthView = () => {
           <button className="text-zinc-50 text-3xl font-semibold">Login</button>
         </div>
       </form>
-      <Link href='/'>
+      <Link href="/">
         <button className="bg-appOrange rounded-lg mt-3 px-6 font-semibold">
           Back
         </button>
