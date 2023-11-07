@@ -9,9 +9,9 @@ const ResultPage = () => {
     { id: 4, date: "01/10/2023" },
   ];
   return (
-    <main className="md:flex md:flex-col  text-center   my-4 md:my-10">
+    <main className="md:flex md:flex-col  text-center my-4 md:my-10">
       <h1 className="text-5xl p-4 mb-6 text-center">Hi Marco!</h1>
-      <div className=" bg-appOrange text-3xl md:mx-auto font-extrabold py-6">
+      <div className=" bg-appOrange text-3xl md:mx-auto font-extrabold p-6">
         <h2 className="mb-4">Check your</h2>
         <h2 className="text-gray-900 ">History</h2>
       </div>
