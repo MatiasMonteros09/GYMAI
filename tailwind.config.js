@@ -14,9 +14,12 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        appOrange: '#ed3900'
+        appOrange: '#ed3900',
+        appOrangeButton:'#ed4030',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 }
