@@ -1,7 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
-
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const AuthView = () => {
@@ -11,15 +11,20 @@ const AuthView = () => {
     formState: { errors },
   } = useForm();
 
+  const router = useRouter()
  
   const onSubmit = handleSubmit(async (data) => {
     console.log(data);
    const res = await signIn('credentials',{
-      name: data.name,
+      email: data.name,
       password: data.password,
       redirect: false,
     })
     console.log(res)
+    if (res.ok){
+      return router.push("/results")
+    }
+    
   })
   return (
     <div className="h-screen mx-5 flex flex-col justify-center items-center ">
@@ -29,8 +34,8 @@ const AuthView = () => {
       <form onSubmit={onSubmit}>
       
         <div className="rounded-lg bg-appOrange p-5 mb-5 flex">
-          <label className="mx-4 font-bold">Username</label>
-          <input className="w-3/5 rounded-lg text-slate-800" type="text"
+          <label className="mx-4 font-bold">Email</label>
+          <input className="w-3/5 rounded-lg text-slate-800" type="email"
           {...register("name", {
             required: {
               value: true,
