@@ -1,5 +1,10 @@
+
 import Link from "next/link";
+
+
 import { HamburgerNav } from "./HamburguerNav";
+import Logout from "./Logout";
+
 
 const Navbar = () => {
   return (
@@ -26,6 +31,9 @@ const Navbar = () => {
             </li>
             <li>
               <Link href="/results"> Results</Link>
+            </li>
+            <li>
+                <Logout/>
             </li>
           </ul>
         </nav>
