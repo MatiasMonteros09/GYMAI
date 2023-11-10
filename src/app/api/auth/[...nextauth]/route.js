@@ -13,7 +13,7 @@ export const authOptions = {
           password: { label: "Password", type: "password", placeholder: "*****" },
         },
         async authorize(credentials) {
-          console.log(credentials)
+          // console.log(credentials)
   
           const userFound = await db.user.findUnique({
               where: {
@@ -23,7 +23,7 @@ export const authOptions = {
   
           if (!userFound) throw new Error('No user found')
   
-          console.log(userFound)
+          // console.log(userFound)
   
           const matchPassword = await bcrypt.compare(credentials.password, userFound.password)
   
@@ -31,6 +31,7 @@ export const authOptions = {
   
           return {
               id: userFound.id,
+              name: userFound.username,
               email: userFound.email,
               
           }

@@ -1,12 +1,16 @@
-
 import Link from "next/link";
-
+import { getServerSession } from "next-auth/next";
 
 import { HamburgerNav } from "./HamburguerNav";
 import Logout from "./Logout";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
+const Navbar = async () => {
+  const session = await getServerSession(authOptions);
+  console.log('----')
+  console.log(session)
+  console.log('-----')
 
-const Navbar = () => {
   return (
     <div className=" bg-appOrange">
       <div className="lg:hidden">
@@ -33,7 +37,7 @@ const Navbar = () => {
               <Link href="/results"> Results</Link>
             </li>
             <li>
-                <Logout/>
+              <Logout />
             </li>
           </ul>
         </nav>
