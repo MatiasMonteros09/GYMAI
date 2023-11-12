@@ -41,6 +41,7 @@ const SignupForm = () => {
     res.ok
       ? (toast.success(result.message), reset(), "continue.html")
       : toast.error(result.message);
+      router.push('/authview')
   });
 
   return (

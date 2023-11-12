@@ -20,7 +20,7 @@ const AuthView = () => {
       password: data.password,
       redirect: false,
     })
-    // console.log(res)
+    console.log(res)
     if (res.ok){
       return router.push("/results")
     }

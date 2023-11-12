@@ -7,9 +7,14 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
-  console.log('----')
+  // console.log('----')
   console.log(session)
-  console.log('-----')
+  // console.log('-----')
+// if (session){
+//   console.log(session);
+// } else{
+//   console.log(session);
+// }
 
   return (
     <div className=" bg-appOrange">
