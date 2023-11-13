@@ -7,9 +7,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
-  console.log('----')
-  console.log(session)
-  console.log('-----')
+  
 
   return (
     <div className=" bg-appOrange">
@@ -18,16 +16,22 @@ const Navbar = async () => {
       </div>
       <div>
         <nav className="hidden bg-appOrange mb-4 lg:flex lg:justify-between lg:items-center px-20 py-3 font-bold">
-          <Link href="/"> Home</Link>
 
+          <Link href="/"> Home</Link>
           <ul className="lg:flex gap-5">
+            {!session?.user ?(
+           <>
             <li>
               <Link href="/signup"> Sign Up</Link>
             </li>
             <li>
               <Link href="/authview">Sign In</Link>
             </li>
-            <li>
+            
+           </>
+              ):(
+              <>
+              <li>  
               <Link href="/downloadview"> Download Plan</Link>
             </li>
             <li>
@@ -39,6 +43,10 @@ const Navbar = async () => {
             <li>
               <Logout />
             </li>
+            {session.user.name}
+            </>
+            )}
+            
           </ul>
         </nav>
       </div>

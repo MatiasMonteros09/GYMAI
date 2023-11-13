@@ -22,7 +22,8 @@ const AuthView = () => {
     })
     // console.log(res)
     if (res.ok){
-      return router.push("/results")
+      router.push("/results")
+      router.refresh()
     }
     
   })

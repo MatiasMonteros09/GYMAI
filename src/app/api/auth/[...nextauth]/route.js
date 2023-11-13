@@ -1,5 +1,6 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from 'next-auth/providers/credentials'
+import GoogleProvider from 'next-auth/providers/google'
 import db from "@/libs/db"
 import bcrypt from "bcrypt"
 
@@ -14,7 +15,7 @@ export const authOptions = {
         },
         async authorize(credentials) {
           // console.log(credentials)
-  
+        
           const userFound = await db.user.findUnique({
               where: {
                   email: credentials.email
@@ -37,6 +38,10 @@ export const authOptions = {
           }
         },
       }),
+      GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      })
     ],
     pages: {
       signIn: "/authview",
