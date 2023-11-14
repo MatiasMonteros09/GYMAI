@@ -23,7 +23,7 @@ export const authOptions = {
   
           if (!userFound) throw new Error('No user found')
   
-          console.log(userFound)
+          // console.log(userFound)
   
           const matchPassword = await bcrypt.compare(credentials.password, userFound.password)
   
