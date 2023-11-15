@@ -29,7 +29,7 @@ const AuthView = () => {
   return (
     <div className="h-screen mx-5 flex flex-col justify-center items-center ">
       <h1 className="text-center text-zinc-50 text-xl mb-10 font-extrabold">
-        NICE TO SEE YOU!
+        NICE TO SEE YOU! 
       </h1>
       <form onSubmit={onSubmit}>
       
