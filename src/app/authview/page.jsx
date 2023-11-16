@@ -14,15 +14,16 @@ const AuthView = () => {
   const router = useRouter()
  
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
+    // console.log(data);
    const res = await signIn('credentials',{
       email: data.name,
       password: data.password,
       redirect: false,
     })
-    console.log(res)
+    // console.log(res)
     if (res.ok){
-      return router.push("/results")
+      router.push("/results")
+      router.refresh()
     }
     
   })
