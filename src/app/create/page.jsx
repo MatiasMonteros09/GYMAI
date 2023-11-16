@@ -9,7 +9,7 @@ const InputView = () => {
             <form >
                 <div className="rounded-lg bg-appOrange p-5 m-3 flex">
                     <label className="mx-5 font-bold">Body parts</label>
-                    <input className="w-3/5 rounded-lg" type="text" placeholder="🔽 Amrs"/>
+                    <input className="w-3/5 rounded-lg" type="text" name="objective" placeholder="🔽 Amrs"/>
                 </div>
                 <div className="rounded-lg bg-appOrange p-5 mb-20 mx-3 flex">
                     <label className="mx-7 font-bold">Objetive</label>

@@ -39,7 +39,10 @@ const SignupForm = () => {
     const result = await res.json();
 
     res.ok
-      ? (toast.success(result.message), reset(), "continue.html")
+      ? (toast.success(result.message),
+        reset(),
+        "continue.html",
+        router.push("/authview"))
       : toast.error(result.message);
   });
 
@@ -164,7 +167,6 @@ const SignupForm = () => {
             Back
           </Link>
         </form>
-        
 
         <Toaster />
       </div>
