@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/libs/db";
 
-
 //Se utilizó para agregar las body parts
 
 // export async function POST(request) {
@@ -11,7 +10,6 @@ import { db } from "@/libs/db";
 //     const existingBodyPart = await db.bodyPart.findUnique({
 //       where: { name: name },
 //     });
-
 
 //     //Contola si ya existe body part
 //     if (existingBodyPart) {
@@ -27,7 +25,6 @@ import { db } from "@/libs/db";
 //       },
 //     });
 
-
 //     return NextResponse.json(
 //       { newBodyPart, message: "Successful registration" },
 //       { status: 201 }
@@ -39,3 +36,7 @@ import { db } from "@/libs/db";
 //     );
 //   }
 // }
+export async function GET() {
+  const bodys = await db.bodyPart.findMany();
+  return NextResponse.json(bodys);
+}
