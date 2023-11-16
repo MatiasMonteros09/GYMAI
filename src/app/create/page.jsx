@@ -8,11 +8,15 @@ const InputView = () => {
             <form >
                 <div className="rounded-lg bg-appOrange p-5 m-3 flex">
                     <label className="mx-5 font-bold">Body parts</label>
-                    <input className="w-3/5 rounded-lg" type="text" name="objective" placeholder="🔽 Amrs"/>
+                    <select name="bodyPart" className="w-3/5 rounded-lg text-slate-950">
+                        <option value="">Select...</option>
+                    </select>
                 </div>
                 <div className="rounded-lg bg-appOrange p-5 mb-20 mx-3 flex">
                     <label className="mx-7 font-bold">Objetive</label>
-                    <input className="w-3/5 rounded-lg" type="password" placeholder="🔽 Volume"/>
+                    <select name="Objetive" className="w-3/5 rounded-lg text-slate-950" type="password" placeholder="Select">
+                    <option value="">Select...</option>
+                    </select>
                 </div>
                 <div className="rounded-lg bg-appOrange p-8 m-3 flex justify-center items-center">
                     <button className="text-gray-50 text-3xl font-semibold">
