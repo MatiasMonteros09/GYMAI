@@ -45,7 +45,8 @@ export const authOptions = {
     ],
     pages: {
       signIn: "/authview",
-    }
+    },
+    secret: process.env.SECRET
   };
   
   const handler = NextAuth(authOptions);
