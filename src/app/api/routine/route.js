@@ -26,7 +26,7 @@ import { db } from "@/libs/db";
 //     });
 
 //     return NextResponse.json(
-//       { newBodyPart, message: "Successful registration" },
+//       { newBodyPart, message: "Successful created body part" },
 //       { status: 201 }
 //     );
 //   } catch (error) {
@@ -37,6 +37,6 @@ import { db } from "@/libs/db";
 //   }
 // }
 export async function GET() {
-  const bodys = await db.bodyPart.findMany();
+  const bodys = await db.BodyPart.findMany()
   return NextResponse.json(bodys);
 }

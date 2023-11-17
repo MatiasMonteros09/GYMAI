@@ -8,10 +8,8 @@ datasource db {
 }
 
 model BodyPart {
-  id         Int     @id @default(autoincrement())
-  name       String  @unique
-  // routine_id Int     @unique
-  // Routine    Routine @relation(fields: [routine_id], references: [id])
+  id   Int    @id @default(autoincrement())
+  name String @unique
 }
 
 model Objetive {
@@ -22,12 +20,11 @@ model Objetive {
 }
 
 model Routine {
-  id         Int        @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   init       DateTime
   creator_id Int
-  // Body_Part  BodyPart?
   Objetive   Objetive?
-  User       User       @relation(fields: [creator_id], references: [id])
+  User       User      @relation(fields: [creator_id], references: [id])
 }
 
 model User {
