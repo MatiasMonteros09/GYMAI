@@ -35,7 +35,7 @@ const Navbar = async () => {
               <Link href="/downloadview"> Download Plan</Link>
             </li>
             <li>
-              <Link href="/inputview"> Create Plan</Link>
+              <Link href="/create"> Create Plan</Link>
             </li>
             <li>
               <Link href="/results"> Results</Link>

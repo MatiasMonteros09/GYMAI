@@ -1,45 +1,42 @@
 import { NextResponse } from "next/server";
 import { db } from "@/libs/db";
 
-export async function POST(request) {
-    try {
-      const { username, email, password } = await request.json();
-  
-      const existingUserByEmail = await db.user.findUnique({
-        where: { email: email },
-      });
-  
-      
-  
-      //Contola si ya existe email
-      if (existingUserByEmail) {
-        return NextResponse.json(
-          { user: null, message: "Email already exists" },
-          { status: 400 }
-        );
-      }
-  
-      //Encripta contraseña
-      const hashedPassword = await hash(password, 10);
-  
-      const newUser = await db.user.create({
-        data: {
-          username,
-          email,
-          password: hashedPassword,
-        },
-      });
-  
-      const { password: _, ...user } = newUser;
-  
-      return NextResponse.json(
-        { user, message: "Successful registration" },
-        { status: 201 }
-      );
-    } catch (error) {
-      return NextResponse.json(
-        { message: "Something went wrong!" },
-        { status: 500 }
-      );
-    }
-  }
+//Se utilizó para agregar las body parts
+
+// export async function POST(request) {
+//   try {
+//     const { name } = await request.json();
+
+//     const existingBodyPart = await db.bodyPart.findUnique({
+//       where: { name: name },
+//     });
+
+//     //Contola si ya existe body part
+//     if (existingBodyPart) {
+//       return NextResponse.json(
+//         { body: null, message: "Body already exists" },
+//         { status: 400 }
+//       );
+//     }
+
+//      const newBodyPart = await db.bodyPart.create({
+//       data: {
+//         name,
+//       },
+//     });
+
+//     return NextResponse.json(
+//       { newBodyPart, message: "Successful created body part" },
+//       { status: 201 }
+//     );
+//   } catch (error) {
+//     return NextResponse.json(
+//       { message: "Something went wrong!" },
+//       { status: 500 }
+//     );
+//   }
+// }
+export async function GET() {
+  const bodys = await db.BodyPart.findMany()
+  return NextResponse.json(bodys);
+}
