@@ -2,12 +2,14 @@
 import Link from "next/link";
 import Select from "react-select";
 
+
 const optionsBodyParts = [
   { value: "arms", label: "Arms" },
   { value: "legs", label: "Legs" },
   { value: "chest", label: "Chest" },
   
 ];
+
 
 const optionsObjectives = [
   { value: "strength", label: "Strength" },

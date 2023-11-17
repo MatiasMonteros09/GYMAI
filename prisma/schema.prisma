@@ -7,16 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model BodyPart {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+}
+
 model Objetive {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   description String @unique
 }
 
 model Routine {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   init       DateTime
   creator_id Int
-  User       User     @relation(fields: [creator_id], references: [id])
+  User       User      @relation(fields: [creator_id], references: [id])
 }
 
 model User {
@@ -26,9 +31,4 @@ model User {
   email      String    @unique
   created_at DateTime  @default(now())
   Routine    Routine[]
-}
-
-model BodyPart {
-  id   Int    @id @default(autoincrement())
-  name String @unique
 }
