@@ -36,7 +36,25 @@ import { db } from "@/libs/db";
 //     );
 //   }
 // }
+
+// Se utilizo para borrar todas las partes del cuepo
+
+// export async function DELETE() {
+//   try {
+//     await db.BodyPart.deleteMany();
+//     return NextResponse.json(
+//       {body:null message: "Successful delete bodys parts" },
+//       { status: 201 }
+//     );
+//   } catch (error) {
+//     return NextResponse.json(
+//       { message: "Something went wrong!" },
+//       { status: 500 }
+//     );
+//   }
+// }
+
 export async function GET() {
-  const bodys = await db.BodyPart.findMany()
+  const bodys = await db.BodyPart.findMany();
   return NextResponse.json(bodys);
 }

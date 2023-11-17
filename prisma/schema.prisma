@@ -7,27 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Body_Part {
-  id         Int     @id @default(autoincrement())
-  name       String
-  routine_id Int     @unique
-  Routine    Routine @relation(fields: [routine_id], references: [id])
+model BodyPart {
+  id   Int    @id @default(autoincrement())
+  name String @unique
 }
 
 model Objetive {
   id          Int     @id @default(autoincrement())
-  description String
-  routine_id  Int     @unique
-  Routine     Routine @relation(fields: [routine_id], references: [id])
+  description String @unique
 }
 
 model Routine {
-  id         Int        @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   init       DateTime
   creator_id Int
-  Body_Part  Body_Part?
-  Objetive   Objetive?
-  User       User       @relation(fields: [creator_id], references: [id])
+  User       User      @relation(fields: [creator_id], references: [id])
 }
 
 model User {
