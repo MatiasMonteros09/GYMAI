@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Select from 'react-select';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const InputView = () => {
   const [bodyPartsOptions, setBodyPartsOptions] = useState([]);
@@ -10,6 +11,7 @@ const InputView = () => {
   const [selectedBodyPart, setSelectedBodyPart] = useState(null);
   const [selectedObjective, setSelectedObjective] = useState(null);
 
+  const router = useRouter()
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -57,6 +59,11 @@ const InputView = () => {
 
     // Mostrar el objeto por consola
     console.log('Selected Values:', selectedValues);
+
+    if (selectedValues){
+      router.push("/downloadview")
+      router.refresh()
+    }
   };
 
   return (
@@ -65,12 +72,12 @@ const InputView = () => {
         <h1 className="text-zinc-50 text-xl font-extrabold">CREATE YOUR PLAN</h1>
         <div className="bg-appOrange px-4 py-2 rounded-full">Select your options</div>
       </div>
-      <form className="w-full max-w-md" onSubmit={handleSubmit}>
+      <form className="w-4/5 max-w-md" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-white font-bold mb-2">Body parts</label>
           <Select
             options={bodyPartsOptions}
-            className="w-full text-black"
+            className=" text-black"
             placeholder="Select Body Part"
             onChange={handleBodyPartChange}
           />
@@ -79,7 +86,7 @@ const InputView = () => {
           <label className="block text-white font-bold mb-2">Objective</label>
           <Select
             options={objectivesOptions}
-            className="w-full text-black"
+            className=" text-black"
             placeholder="Select Objective"
             onChange={handleObjectiveChange}
           />
