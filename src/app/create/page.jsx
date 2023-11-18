@@ -14,7 +14,7 @@ const InputView = () => {
     const fetchData = async () => {
       try {
         // Llamada a la API para obtener las opciones de bodyParts
-        const bodyPartsResponse = await axios.get('/api/body-parts'); // Ajusta la URL de la API según tu configuración
+        const bodyPartsResponse = await axios.get('/api/body-parts'); 
         const bodyPartsMappedOptions = bodyPartsResponse.data.map(item => ({
           value: item.name,
           label: item.name,
@@ -23,7 +23,7 @@ const InputView = () => {
         setBodyPartsOptions(bodyPartsMappedOptions);
   
         // Llamada a la API para obtener las opciones de objectives
-        const objectivesResponse = await axios.get('/api/objetives'); // Ajusta la URL de la API según tu configuración
+        const objectivesResponse = await axios.get('/api/objetives'); 
         const objectivesMappedOptions = objectivesResponse.data.map(item => ({
           value: item.description,
           label: item.description,
