@@ -7,7 +7,7 @@ import useStore from '@/app/store/selectroutine';
 
 
 
-const Downloadview = async() => {
+const Downloadview = () => {
   const { selectedValues } = useStore();
   
   return (
