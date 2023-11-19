@@ -4,14 +4,21 @@ import Link from 'next/link';
 import Select from 'react-select';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import useStore from '@/app/store/selectroutine';
+
 
 const InputView = () => {
-  const [bodyPartsOptions, setBodyPartsOptions] = useState([]);
-  const [objectivesOptions, setObjectivesOptions] = useState([]);
+  // Extrae las funciones del estado global
+  const { setBodyPartsOptions, setObjectivesOptions, setSelectedValues } = useStore();
+  
+  // Usa el estado local para bodyPartsOptions y objectivesOptions
+  const [bodyPartsOptions, setLocalBodyPartsOptions] = useState([]);
+  const [objectivesOptions, setLocalObjectivesOptions] = useState([]);
   const [selectedBodyPart, setSelectedBodyPart] = useState(null);
   const [selectedObjective, setSelectedObjective] = useState(null);
 
-  const router = useRouter()
+  const router = useRouter();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,8 +29,13 @@ const InputView = () => {
           label: item.name,
         }));
         console.log('Mapped Body Parts Options:', bodyPartsMappedOptions);
+
+        // Actualizar el estado local con setLocalBodyPartsOptions
+        setLocalBodyPartsOptions(bodyPartsMappedOptions);
+        
+        // Actualizar el estado global con setBodyPartsOptions
         setBodyPartsOptions(bodyPartsMappedOptions);
-  
+
         // Llamada a la API para obtener las opciones de objectives
         const objectivesResponse = await axios.get('/api/objetives'); 
         const objectivesMappedOptions = objectivesResponse.data.map(item => ({
@@ -31,14 +43,19 @@ const InputView = () => {
           label: item.description,
         }));
         console.log('Mapped Objectives Options:', objectivesMappedOptions);
+
+        // Actualizar el estado local con setLocalObjectivesOptions
+        setLocalObjectivesOptions(objectivesMappedOptions);
+
+        // Actualizar el estado global con setObjectivesOptions
         setObjectivesOptions(objectivesMappedOptions);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-  
+
     fetchData();
-  }, []);
+  }, [setBodyPartsOptions, setObjectivesOptions]); // Agrega las dependencias
 
   const handleBodyPartChange = (selectedOption) => {
     setSelectedBodyPart(selectedOption);
@@ -51,20 +68,22 @@ const InputView = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Crear un objeto con los valores seleccionados
     const selectedValues = {
       bodyPart: selectedBodyPart,
       objective: selectedObjective,
     };
 
-    // Mostrar el objeto por consola
     console.log('Selected Values:', selectedValues);
 
     if (selectedValues){
-      router.push("/downloadview")
-      router.refresh()
+      router.push("/downloadview");
+      router.refresh();
+      
+      // Actualizar el estado global con setSelectedValues
+      setSelectedValues(selectedValues);
     }
   };
+
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-900 text-white">
