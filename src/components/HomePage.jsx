@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import { BsFiletypePdf } from 'react-icons/bs';
+ // Corrige la ruta según la estructura de tu proyecto
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center">
       <div className="text-center">
+        
         <h1 className="text-3xl md:text-5xl font-extrabold mb-2">Welcome to GYM AI</h1>
         <p className="text-base md:text-lg mb-4">Your Personalized Workout Planning Tool</p>
       </div>
@@ -15,7 +16,6 @@ const HomePage = () => {
             Get Started
           </button>
         </Link>
-        
       </div>
     </div>
   );

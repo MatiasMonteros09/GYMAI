@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.5.2",
@@ -15,6 +16,7 @@
     "cookie": "^0.6.0",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
+    "mock-aws-s3": "^4.0.2",
     "next": "13.5.6",
     "next-auth": "^4.24.4",
     "react": "^18",
