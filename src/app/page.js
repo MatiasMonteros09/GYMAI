@@ -15,17 +15,17 @@ const HomePage = () => {
       <main className="bg-appOrange py-5">
         <h2 className="text-center text-black text-xl font-extrabold">WE CREATE YOUR PLAN</h2>
       </main>
-      <aside className="flex justify-around p-5">
-        <div className="flex text-blue-700 h-10 ml-5">
+      <aside className="flex justify-evenly py-5">
+        <div className="flex text-blue-700 h-10">
           <FontAwesomeIcon icon={faFacebook} />
         </div>
-        <div className="flex text-fuchsia-800 h-10 ml-5">
+        <div className="flex text-fuchsia-800 h-10">
           <FontAwesomeIcon icon={faInstagram} />
         </div>
-        <div className="flex text-lime-600 h-10 ml-5">
+        <div className="flex text-lime-600 h-10">
           <FontAwesomeIcon icon={faWhatsapp} />
         </div>
-        <div className="flex text-gray-950 h-10 ml-5">
+        <div className="flex text-gray-950 h-10">
           <FontAwesomeIcon icon={faXTwitter} />
         </div>
       </aside>
