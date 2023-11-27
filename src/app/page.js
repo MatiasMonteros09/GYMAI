@@ -16,18 +16,18 @@ const HomePage = () => {
         <h2 className="text-center text-black text-xl font-extrabold">WE CREATE YOUR PLAN</h2>
       </main>
       <aside className="flex justify-evenly py-5">
-        <div className="flex text-blue-700 h-10">
-          <FontAwesomeIcon icon={faFacebook} />
-        </div>
-        <div className="flex text-fuchsia-800 h-10">
-          <FontAwesomeIcon icon={faInstagram} />
-        </div>
-        <div className="flex text-lime-600 h-10">
-          <FontAwesomeIcon icon={faWhatsapp} />
-        </div>
-        <div className="flex text-gray-950 h-10">
-          <FontAwesomeIcon icon={faXTwitter} />
-        </div>
+        <button className="flex text-blue-700 h-1">
+          <Link href="https://es-la.facebook.com/"><FontAwesomeIcon icon={faFacebook} />GYM_AI</Link>
+        </button>
+        <button className="flex text-fuchsia-800">
+          <Link href="https://www.instagram.com/"><FontAwesomeIcon icon={faInstagram} />GYM_AI</Link>
+        </button>
+        <button className="flex text-lime-600">
+          <Link href="https://web.whatsapp.com/"><FontAwesomeIcon icon={faWhatsapp} />GYM_AI</Link>
+        </button>
+        <button className="flex text-gray-950">
+          <Link href="https://twitter.com/"><FontAwesomeIcon icon={faXTwitter} />GYM_AI</Link>
+        </button>
       </aside>
       <div className="bg-appOrange p-5">
         <h3 className="text-center text-zinc-50 text-xl font-extrabold">
