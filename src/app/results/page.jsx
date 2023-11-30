@@ -34,12 +34,7 @@ const ResultPage = () => {
           </li>
         ))}
       </ul>
-      <Link
-        href="/"
-        className="bg-appOrange mx-auto text-gray-900 py-1 px-8 rounded-lg text-center hover:bg-orange-400 md:text-2xl md:px-12 md:py-4"
-      >
-        Back
-      </Link>
+      
     </main>
   );
 };
