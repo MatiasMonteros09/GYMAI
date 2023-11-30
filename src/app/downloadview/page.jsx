@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { BsFiletypePdf } from "react-icons/bs";
 import "./page.css";
