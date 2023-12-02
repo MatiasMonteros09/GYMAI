@@ -1,12 +1,16 @@
+
 "use client";
+
 import Link from "next/link";
 import React from "react";
 import { BsFiletypePdf } from "react-icons/bs";
 import "./page.css";
+
 import useStore from "@/app/store/selectroutine";
 
 import { useEffect, useState } from "react";
 import { obtenerRespuesta } from "@/components/ChatGpt";
+
 
 const Downloadview = () => {
   const { selectedValues } = useStore();
@@ -59,6 +63,7 @@ useEffect(() => {
 
       <div className=" w-screen plan-container bg-appOrange px-5  mb-20 flex flex-col justify-around items-center">
         <h1 className="font-extrabold text-xl text-zinc-50">MAKE THIS PLAN</h1>
+
         <h1 className="font-extrabold text-xl text-slate-800">
           {selectedValues.bodyPart && selectedValues.bodyPart.label}
         </h1>
@@ -69,6 +74,9 @@ useEffect(() => {
           
         <p>Respuesta: {respuesta}</p>
         </div>
+
+        <h1 className="font-extrabold text-xl text-slate-800">FOR YOU</h1>
+
       </div>
 
       <div className="rounded-lg bg-appOrange p-5 mb-5 flex justify-center items-center">

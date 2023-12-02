@@ -33,7 +33,10 @@ const ResultPage = () => {
             <ResultCard result={result} />
           </li>
         ))}
-      </ul>      
+
+      </ul>
+      
+
     </main>
   );
 };

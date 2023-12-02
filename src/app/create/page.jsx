@@ -116,6 +116,7 @@ const InputView = () => {
           </button>
         </div>
       </form>
+
     </div>
   );
 };
