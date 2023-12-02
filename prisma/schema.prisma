@@ -21,10 +21,8 @@ model Routine {
   id          Int      @id @default(autoincrement())
   init        DateTime @default(now())
   description String
-
+  creatorId   Int
   user        User     @relation(fields: [creatorId], references: [id])
-  creatorId  Int
-
 }
 
 model User {
@@ -33,7 +31,5 @@ model User {
   password   String
   email      String    @unique
   created_at DateTime  @default(now())
-
-  routines    Routine[]
-
+  routines   Routine[]
 }

@@ -46,7 +46,7 @@ useEffect(() => {
       .then((res) => {
         setRespuesta(res);
         // Enviar la respuesta a la tabla Routine
-        sendResponseToPrisma({ init: new Date(), creator_id: 1 /* reemplazar con el ID real */, /* otros campos */ });
+        sendResponseToPrisma({ response:res, creatorId: 1 /* reemplazar con el ID real */, /* otros campos */ });
       });
   }
 }, [selectedValues]);

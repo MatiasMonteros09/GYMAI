@@ -7,7 +7,8 @@ export async function POST(request) {
   try {
     const { response, creatorId } = await request.json();
 
-    console.log(creatorId, response);
+
+    // console.log(creatorId, response);
 
     const newRoutine = await db.routine.create({
       data: {
@@ -38,13 +39,3 @@ export async function GET() {
 
 }
 
-export async function POST(request){
-  const {response} = await request.json()
-  
-  const newRoutine = await db.routine.create({
-    data:{
-      description:response
-      
-    }
-  })
-}
