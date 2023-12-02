@@ -31,7 +31,20 @@ export async function POST(request) {
 }
 
 export async function GET() {
+
   const routines = await db.Routine.findMany();
 
   return NextResponse.json(routines);
+
+}
+
+export async function POST(request){
+  const {response} = await request.json()
+  
+  const newRoutine = await db.routine.create({
+    data:{
+      description:response
+      
+    }
+  })
 }

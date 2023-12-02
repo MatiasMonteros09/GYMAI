@@ -1,15 +1,15 @@
 'use client'
 import ResultCard from "../../components/ResultCard";
 import Link from "next/link";
-import axios from "axios";
 
-const getProfile= async()=>{
-  const response = await axios.get('api/cookieprofile')
-  console.log(response)
-}
+import {useSession} from "next-auth/react";
+
+
 
 
 const ResultPage = () => {
+  const {data:session} =  useSession();
+
   const results = [
     { id: 1, date: "01/07/2023" },
     { id: 2, date: "01/08/2023" },
@@ -18,7 +18,7 @@ const ResultPage = () => {
   ];
   return (
     <main className="md:flex md:flex-col  text-center my-4 md:my-10">
-      <h1 className="text-5xl p-4 mb-6 text-center">Hi</h1>
+      <h1 className="text-5xl p-4 mb-6 text-center">Hi {session?.user?.name}</h1>
       <button onClick={()=> getProfile()}>
         Reveal
       </button>
@@ -33,8 +33,10 @@ const ResultPage = () => {
             <ResultCard result={result} />
           </li>
         ))}
+
       </ul>
       
+
     </main>
   );
 };

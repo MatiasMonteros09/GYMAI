@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { signIn } from "next-auth/react";
+
 import { Toaster, toast } from "react-hot-toast";
+import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+
 
 const SignupForm = () => {
   // const session = useSession();
@@ -13,6 +14,7 @@ const SignupForm = () => {
   // if (session) {
   //   redirect("/create");
   // }
+
 
   const {
     register,
@@ -24,8 +26,10 @@ const SignupForm = () => {
 
   const router = useRouter();
 
+
   const onSubmit = handleSubmit(async (data) => {
     const { email, username, password } = data;
+
 
     const res = await fetch("api/signup", {
       method: "POST",
@@ -41,6 +45,7 @@ const SignupForm = () => {
 
     const result = await res.json();
 
+
     //Realiza un SignIn success
     await signIn("credentials", {
       email: result.user.email,
@@ -48,16 +53,21 @@ const SignupForm = () => {
       redirect: false,
     });
 
+
     res.ok
       ? (toast.success(result.message),
         reset(),
         "continue.html",
+
         router.push("/create"))
+
       : toast.error(result.message);
   });
 
   return (
-    // <div className="bg-no-repeat bg-[url('/gymai.jpg')]  bg-center bg-cover">
+
+    <div className="bg-no-repeat bg-[url('/gymai.jpg')]  bg-center bg-cover">
+
       <div className=" mx-2 min-h-screen lg:flex lg:justify-center lg:items-center mt-2 ">
         <form className="md:w-1/4" onSubmit={onSubmit}>
           <h1 className="text-center text-zinc-50 text-3xl mb-4 font-extrabold  p-0 animate-wiggle-more animate-infinite drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
@@ -169,11 +179,17 @@ const SignupForm = () => {
           <button className="w-full text-zinc-50 text-2xl p-2 mb-4 mt-3 font-semibold rounded-lg bg-appOrangeButton hover:shadow-inner transform hover:scale-110 hover:bg-opacity-50 transition ease-out duration-300">
             Register
           </button>
+
+
         </form>
 
         <Toaster />
       </div>
-    // </div>
+
+    </div>
+
+ 
+
   );
 };
 export default SignupForm;
