@@ -116,9 +116,6 @@ const InputView = () => {
           </button>
         </div>
       </form>
-      <Link className="bg-appOrange rounded-lg mt-3 px-6 font-semibold text-zinc-950" href='/'>
-        Back
-      </Link>
     </div>
   );
 };

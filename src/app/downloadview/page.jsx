@@ -77,12 +77,6 @@ useEffect(() => {
         </button>
         <BsFiletypePdf style={{ fontSize: "40px" }} />
       </div>
-
-      <Link href="/">
-        <button className="bg-appOrange rounded-lg mt-3 px-6 font-semibold">
-          Back
-        </button>
-      </Link>
     </div>
   );
 };
