@@ -13,11 +13,39 @@ const Downloadview = () => {
 
   const [respuesta, setRespuesta] = useState("");
 
-  useEffect(() => {
-    if(selectedValues?.bodyPart?.label && selectedValues?.objective?.label){
-    obtenerRespuesta(selectedValues.bodyPart.label,selectedValues.objective.label).then((res) => setRespuesta(res));
+  const apiUrl = "api/routine";  // Reemplaza con la URL real de tu API
+
+const sendResponseToPrisma = async (data) => {
+  try {
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al enviar los datos a Prisma.");
     }
-  }, [selectedValues])
+
+    console.log("Datos enviados correctamente a Prisma.");
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+};
+
+  
+useEffect(() => {
+  if (selectedValues?.bodyPart?.label && selectedValues?.objective?.label) {
+    obtenerRespuesta(selectedValues.bodyPart.label, selectedValues.objective.label)
+      .then((res) => {
+        setRespuesta(res);
+        // Enviar la respuesta a la tabla Routine
+        sendResponseToPrisma({ init: new Date(), creator_id: 1 /* reemplazar con el ID real */, /* otros campos */ });
+      });
+  }
+}, [selectedValues]);
 
   return (
     <div className="h-screen mx-5 flex flex-col justify-center items-center">

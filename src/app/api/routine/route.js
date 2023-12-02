@@ -37,6 +37,17 @@ import { db } from "@/libs/db";
 //   }
 // }
 export async function GET() {
-  const bodys = await db.BodyPart.findMany()
+  const bodys = await db.routine.findMany()
   return NextResponse.json(bodys);
+}
+
+export async function POST(request){
+  const {response} = await request.json()
+  
+  const newRoutine = await db.routine.create({
+    data:{
+      description:response
+      
+    }
+  })
 }

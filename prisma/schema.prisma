@@ -18,10 +18,11 @@ model Objetive {
 }
 
 model Routine {
-  id         Int      @id @default(autoincrement())
-  init       DateTime
-  creator_id Int
-  User       User     @relation(fields: [creator_id], references: [id])
+  id          Int      @id @default(autoincrement())
+  init        DateTime @default(now())
+  description String
+  creatorId   Int
+  User        User     @relation(fields: [creatorId], references: [id])
 }
 
 model User {
