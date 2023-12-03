@@ -60,4 +60,4 @@ Open your browser and navigate to http://localhost:3000.
 
 ## Mockup
 
-![MOCKUP](diseño.png "Mockup")
+![MOCKUP](../../img/diseño.png "Mockup")
