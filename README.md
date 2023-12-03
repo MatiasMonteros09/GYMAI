@@ -3,15 +3,15 @@
 Welcome to GymAI, a web application for creating and managing workout plans.
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+- [Introduction](#introduction "introduction")
+- [Features](#features "features")
+- [Getting Started](#getting-started "getting-started")
+  - [Prerequisites](#prerequisites "pre-requisites")
+  - [Installation](#installation "installation")
+- [Usage](#usage "usage")
+- [Technologies Used](#technologies-used "technologies-used")
+- [Contributing](#contributing "contributing")
+- [License](#license "licence")
 
 ## Introduction
 
