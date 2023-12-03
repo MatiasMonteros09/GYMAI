@@ -60,4 +60,6 @@ Open your browser and navigate to http://localhost:3000.
 
 ## Mockup
 
-![MOCKUP](diseño.png "Mockup")
+[figma.com](https://www.figma.com/file/a1bpE605ebtY20vJ7l8JEb/GYM-AI?type=design&node-id=0-1&mode=design&t=Iu1K13cu2QPsgbSj-0 "Figma")
+
+
