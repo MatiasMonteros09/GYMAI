@@ -5,15 +5,11 @@ import { useRouter } from "next/navigation";
 import { Toaster, toast } from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import CircularMenuButton from "@/components/CircularMenu";
 
+// Your SigninForm component
 const SigninForm = () => {
   const router = useRouter();
-  // const session = useSession();
-  // console.log(session.data);
-
-  // if (session.data){
-  //   router.push("/create");
-  // }
 
   const {
     register,
@@ -21,7 +17,6 @@ const SigninForm = () => {
     formState: { errors },
     reset,
   } = useForm();
-
 
   const onSubmit = handleSubmit(async (data) => {
     const res = await signIn("credentials", {
@@ -38,29 +33,30 @@ const SigninForm = () => {
         router.refresh())
       : toast.error(res.error);
   });
+
   return (
-    <div className="h-screen mx-5 flex flex-col justify-center items-center ">
-      <h1 className="text-center text-zinc-50 text-xl mb-10 font-extrabold">
+    <div className="h-screen flex flex-col justify-center items-center bg-gradient-to-r from-green-400 to-blue-500">
+      <h1 className="text-center text-white text-3xl mb-10 font-extrabold">
         NICE TO SEE YOU!
       </h1>
-      <form onSubmit={onSubmit}>
-        <div className="rounded-lg bg-appOrange p-5 mb-5 flex">
-          <label className="mx-4 font-bold">Email</label>
+      <form onSubmit={onSubmit} className="w-full max-w-md">
+        <div className="mb-5">
+          <label className="block text-white font-bold mb-2">Email</label>
           <input
-            className="w-3/5 rounded-lg text-slate-800"
+            className="w-full px-3 py-2 rounded-md text-gray-800 bg-white"
             type="email"
             {...register("name", {
               required: {
                 value: true,
-                message: "Name is required",
+                message: "Email is required",
               },
             })}
           />
         </div>
-        <div className="rounded-lg bg-appOrange p-5 mb-20 flex">
-          <label className="mx-4 font-bold">Password</label>
+        <div className="mb-5">
+          <label className="block text-white font-bold mb-2">Password</label>
           <input
-            className="w-3/5 rounded-lg text-slate-800"
+            className="w-full px-3 py-2 rounded-md text-gray-800 bg-white"
             type="password"
             {...register("password", {
               required: {
@@ -70,11 +66,17 @@ const SigninForm = () => {
             })}
           />
         </div>
-        <div className="rounded-lg bg-appOrange p-8 mb-5 flex justify-center items-center">
-          <button className="text-zinc-50 text-3xl font-semibold">Login</button>
+        <div className="mb-5">
+          <button
+            className="w-full bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 rounded-md"
+            type="submit"
+          >
+            Login
+          </button>
         </div>
       </form>
-      <Toaster />
+      <Toaster position="bottom-right" />
+      <CircularMenuButton/>
     </div>
   );
 };

@@ -11,15 +11,16 @@ const Navbar = () => {
   const { data: session } = useSession();
 
   const [navbar, setNavbar] = useState(false);
+
   return (
     <div>
-      <nav className="w-full bg-black md:bg-appOrange  fixed top-0 left-0 right-0 z-10">
+      <nav className="w-full bg-gradient-to-r from-green-400 to-blue-500 fixed top-0 left-0 right-0 z-10">
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
               {/* LOGO */}
               <Link href="/">
-                <h2 className="text-2xl text-cyan-800 font-bold ">LOGO</h2>
+                <h2 className="text-2xl text-white font-bold">LOGO</h2>
               </Link>
               {/* HAMBURGER BUTTON FOR MOBILE */}
               <div className="md:hidden">
@@ -42,41 +43,42 @@ const Navbar = () => {
                 navbar ? "p-12 md:p-0 block" : "hidden"
               }`}
             >
-              <ul className="h-screen md:h-auto items-center justify-center md:flex ">
-              {!session?.user ?(
-     <>
-                <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="/signup" onClick={() => setNavbar(!navbar)} >
-                    Sign Up
-                  </Link>
-                </li>
-                <li className="pb-6 text-xl  text-appOrange md:text-white  py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="/signin" onClick={() => setNavbar(!navbar)}>
-                    Sign In
-                  </Link>
-                </li>
-                </>
-                ) :(
+              <ul className="h-screen md:h-auto items-center justify-center md:flex">
+                {!session?.user ? (
                   <>
-                <li className="pb-6 text-xl text-appOrange md:text-white  py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="/downloadview" onClick={() => setNavbar(!navbar)} >
-                    Download Plan
-                  </Link>
-                </li>
-                <li className="pb-6 text-xl  text-appOrange md:text-white  py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="/create" onClick={() => setNavbar(!navbar)}>
-                    Create Plan
-                  </Link>
-                </li>
-                <li className="pb-6 text-xl  text-appOrange md:text-white  py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="/results" onClick={() => setNavbar(!navbar)}>
-                    Results
-                  </Link>
-                </li>
-                <li className="pb-6 text-xl py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-red-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Logout />
-                </li>
-                </>)}
+                    <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-900 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
+                      <Link href="/signup" onClick={() => setNavbar(!navbar)}>
+                        Sign Up
+                      </Link>
+                    </li>
+                    <li className="pb-6 text-xl text-appOrange md:text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
+                      <Link href="/signin" onClick={() => setNavbar(!navbar)}>
+                        Sign In
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="pb-6 text-xl text-appOrange md:text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
+                      <Link href="/downloadview" onClick={() => setNavbar(!navbar)}>
+                        Download Plan
+                      </Link>
+                    </li>
+                    <li className="pb-6 text-xl text-appOrange md:text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
+                      <Link href="/create" onClick={() => setNavbar(!navbar)}>
+                        Create Plan
+                      </Link>
+                    </li>
+                    <li className="pb-6 text-xl text-appOrange md:text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
+                      <Link href="/results" onClick={() => setNavbar(!navbar)}>
+                        Results
+                      </Link>
+                    </li>
+                    <li className="pb-6 text-xl py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-red-900 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
+                      <Logout />
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>
@@ -84,7 +86,6 @@ const Navbar = () => {
       </nav>
     </div>
   );
-  
 };
 
 export default Navbar;
