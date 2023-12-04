@@ -30,9 +30,8 @@ const SigninForm = () => {
       redirect: false,
     });
 
-
     res.ok
-      ? (toast.success('Welcome!!'),
+      ? (toast.success(res.message),
         reset(),
         "continue.html",
         router.push("/create"),
