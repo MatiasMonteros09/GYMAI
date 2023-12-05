@@ -4,6 +4,10 @@ import Link from "next/link";
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+
+import { BsFiletypePdf } from "react-icons/bs";
+import PdfResults from "@/components/PdfResults";
 
 async function loadResults(session) {
   try {
@@ -54,8 +58,18 @@ const ResultPage = () => {
 
       <ul className="text-orange-600 py-20 text-bold">
         {results.map((result) => (
-          <li key={result.id}>
+          <li className=" hover:bg-orange-400 md:text-2xl" key={result.id}>
             <ResultCard result={result} />
+            <PDFDownloadLink document={<PdfResults result={result} />} filename="FORM">
+          {({ loading }) =>
+            loading ? (
+              <button>Loading Document...</button>
+            ) : (
+              <button>Download</button>
+            )
+          }
+        </PDFDownloadLink>
+        <BsFiletypePdf style={{ fontSize: "40px" }} />
           </li>
         ))}
       </ul>
