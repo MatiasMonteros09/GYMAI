@@ -6,12 +6,28 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 async function loadResults(session) {
-  const { user } = session;
-  const res = await fetch(`http://localhost:3000/api/routine/${user.id}`);
-  const data = await res.json();
-  return data;
-}
+  try {
+    if (!session) {
+      throw new Error("Session is undefined");
+    }
 
+    const { user } = session;
+    if (!user || !user.id) {
+      throw new Error("User or user ID is undefined");
+    }
+
+    const res = await fetch(`http://localhost:3000/api/routine/${user.id}`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch results");
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error loading results:", error);
+    return [];
+  }
+}
 const ResultPage = () => {
   const { data: session } = useSession();
   const [results, setResults] = useState([]);

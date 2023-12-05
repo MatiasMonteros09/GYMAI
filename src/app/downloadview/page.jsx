@@ -1,11 +1,10 @@
-
 "use client";
 
 import Link from "next/link";
 import React from "react";
 import { BsFiletypePdf } from "react-icons/bs";
 import "./page.css";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 import useStore from "@/app/store/selectroutine";
 
 import { useEffect, useState } from "react";
@@ -13,54 +12,61 @@ import { obtenerRespuesta } from "@/components/ChatGpt";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Spinner from "react-bootstrap/Spinner"; // Importa el componente Spinner
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import PdfFile from "@/components/PdfFile";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const Downloadview = () => {
   const { selectedValues } = useStore();
 
   const [respuesta, setRespuesta] = useState("");
 
-  const apiUrl = "api/routine";  // Reemplaza con la URL real de tu API
-  const {data:session} =  useSession();
+  const apiUrl = "api/routine"; // Reemplaza con la URL real de tu API
+  const { data: session } = useSession();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true); // Nuevo estado para manejar la carga
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const sendResponseToPrisma = async (data) => {
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-const sendResponseToPrisma = async (data) => {
-  try {
-    const response = await fetch(apiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+      if (!response.ok) {
+        throw new Error("Error al enviar los datos a Prisma.");
+      }
 
-    if (!response.ok) {
-      throw new Error("Error al enviar los datos a Prisma.");
+      console.log("Datos enviados correctamente a Prisma.");
+    } catch (error) {
+      console.error("Error:", error.message);
     }
+  };
 
-    console.log("Datos enviados correctamente a Prisma.");
-  } catch (error) {
-    console.error("Error:", error.message);
-  }
-};
-
-  
-useEffect(() => {
-  setLoading(true);
-  if (selectedValues?.bodyPart?.label && selectedValues?.objective?.label) {
-    obtenerRespuesta(selectedValues.bodyPart.label, selectedValues.objective.label)
-      .then((res) => {
+  useEffect(() => {
+    setLoading(true);
+    if (selectedValues?.bodyPart?.label && selectedValues?.objective?.label) {
+      obtenerRespuesta(
+        selectedValues.bodyPart.label,
+        selectedValues.objective.label
+      ).then((res) => {
         setRespuesta(res);
         // Enviar la respuesta a la tabla Routine
-        sendResponseToPrisma({ response:res, creatorId: session?.user?.id /* reemplazar con el ID real */, /* otros campos */ });
+        sendResponseToPrisma({
+          response: res,
+          creatorId:
+            session?.user
+              ?.id /* reemplazar con el ID real */ /* otros campos */,
+        });
         setLoading(false);
       });
-  }
-}, [selectedValues]);
+    }
+  }, [selectedValues]);
 
   return (
     <div className="h-screen mx-5 flex flex-col justify-center items-center">
@@ -75,7 +81,6 @@ useEffect(() => {
       <div className=" w-screen plan-container bg-appOrange px-5  mb-20 flex flex-col justify-around items-center">
         <h1 className="font-extrabold text-xl text-zinc-50">MAKE THIS PLAN</h1>
 
-       
         <div>
           <Button variant="secondary" onClick={handleShow}>
             Routine
@@ -103,13 +108,18 @@ useEffect(() => {
         </div>
 
         <h1 className="font-extrabold text-xl text-slate-800">FOR YOU</h1>
-
       </div>
 
       <div className="rounded-lg bg-appOrange p-5 mb-5 flex justify-center items-center">
-        <button className="text-zinc-50 text-3xl mx-1 font-semibold">
-          Download
-        </button>
+        <PDFDownloadLink document={<PdfFile respuesta={respuesta} />} filename="FORM">
+          {({ loading }) =>
+            loading ? (
+              <button>Loading Document...</button>
+            ) : (
+              <button>Download</button>
+            )
+          }
+        </PDFDownloadLink>
         <BsFiletypePdf style={{ fontSize: "40px" }} />
       </div>
     </div>
