@@ -41,35 +41,41 @@ const ResultPage = () => {
       const data = await loadResults(session);
       setResults(data);
     };
-
-    fetchData();
+    if (session) {
+      fetchData();
+    }
   }, [session]);
 
   return (
-    <main className="md:flex md:flex-col text-center my-4 md:my-10">
+    <main className="md:flex md:flex-col text-center  mt-20">
       <h1 className="text-5xl p-4 mb-6 text-center">
         Hi {session?.user?.name}
       </h1>
-      <button onClick={() => getProfile()}>Reveal</button>
       <div className="bg-appOrange text-3xl md:mx-auto font-extrabold p-6">
         <h2 className="mb-4">Check your</h2>
         <h2 className="text-gray-900">History</h2>
       </div>
 
-      <ul className="text-orange-600 py-20 text-bold">
+      <ul className="text-orange-600 mt-20 text-bold">
         {results.map((result) => (
           <li className=" hover:bg-orange-400 md:text-2xl" key={result.id}>
-            <ResultCard result={result} />
-            <PDFDownloadLink document={<PdfResults result={result} />} filename="FORM">
-          {({ loading }) =>
-            loading ? (
-              <button>Loading Document...</button>
-            ) : (
-              <button>Download</button>
-            )
-          }
-        </PDFDownloadLink>
-        <BsFiletypePdf style={{ fontSize: "40px" }} />
+            <PDFDownloadLink
+              document={<PdfResults result={result} />}
+              filename="FORM"
+            >
+              {({ loading }) =>
+                loading ? (
+                  <p>Loading Document...</p>
+                ) : (
+                  <div className="grid grid-cols-2 mb-3">
+                    <ResultCard result={result} />
+                    <p className="grid grid-cols-2 gap-0">Download
+                    <BsFiletypePdf style={{ fontSize: "40px" }} />
+                    </p>
+                  </div>
+                )
+              }
+            </PDFDownloadLink>
           </li>
         ))}
       </ul>
