@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import React from "react";
 import { BsFiletypePdf } from "react-icons/bs";
 import "./page.css";
 import { useSession } from "next-auth/react";

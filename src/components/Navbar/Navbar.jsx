@@ -12,8 +12,8 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="w-full bg-black md:bg-appOrange fixed top-0 left-0 right-0 z-10">
-        <div className="flex justify-between px-4  lg:max-w-7xl lg:items-center  lg:px-8">
+      <nav className="w-full bg-black md:bg-appOrange fixed top-0 left-0 right-0 ">
+        <div className="flex justify-between px-4  md:max-w-7xl md:items-center  lg:px-8">
           <Logo />
           <DesktopMenu
             session={session}

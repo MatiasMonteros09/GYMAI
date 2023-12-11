@@ -1,28 +1,49 @@
-// UserMenu.js
 import Link from "next/link";
 import Logout from "@/components/Logout";
 
-const UserMenu = ({ setNavbar }) => (
-  <>
-    <li className="pb-6 text-xl text-appOrange md:text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
-      <Link href="/downloadview" onClick={() => setNavbar(false)}>
-        Download Plan
-      </Link>
-    </li>
-    <li className="pb-6 text-xl text-appOrange md:text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
-      <Link href="/create" onClick={() => setNavbar(false)}>
-        Create Plan
-      </Link>
-    </li>
-    <li className="pb-6 text-xl text-appOrange md:text-white py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-purple-600 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
-      <Link href="/results" onClick={() => setNavbar(false)}>
-        Results
-      </Link>
-    </li>
-    <li className="pb-6 text-xl py-2 px-6 text-center border-b-2 md:border-b-0 hover:bg-red-900 border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
-      <Logout />
-    </li>
-  </>
-);
+import { usePathname } from "next/navigation";
+
+const LINKS = [
+  {
+    name: "Download Plan",
+    path: "/downloadview",
+  },
+  {
+    name: "Create Plan",
+    path: "/create",
+  },
+  {
+    name: "Results",
+    path: "/results",
+  },
+];
+
+const UserMenu = ({ setNavbar }) => {
+  const pathname = usePathname();
+  return (
+    <>
+      <ul className=" md:flex md:gap-10 md:py-0">
+        {LINKS.map(({ name, path }) => {
+          const isActive = pathname === path;
+          return (
+            <li
+              key={path}
+              className={`mb-4 md:text-xl lg:text-2xl md:m-2 p-2 px-4 rounded-lg text-center border-b-2 md:border-b-0  border-purple-900 md:hover:text-purple-400  ${
+                isActive ? "bg-amber-800" : ""
+              }`}
+            >
+              <Link href={path} onClick={() => setNavbar(false)}>
+                {name}
+              </Link>
+            </li>
+          );
+        })}
+        <li className=" md:mt-0  md:text-xl lg:text-2xl py-2 px-4 text-center border-b-2 md:border-b-0  border-purple-900 md:hover:text-purple-600 md:hover:bg-transparent">
+          <Logout />
+        </li>
+      </ul>
+    </>
+  );
+};
 
 export default UserMenu;
