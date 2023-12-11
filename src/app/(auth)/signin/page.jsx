@@ -13,7 +13,10 @@ const Signin = async () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 ">
-      <img src="GYMAI.png" alt="" className="hidden min-h-screen lg:block" />
+      <div className="flex mx-auto mt-20 justify-center items-center " >
+      <img src="GYMAI.png"  alt="" className="hidden p-0 rounded-lg h-96  mt-10 md:block" />
+
+    </div>
       <SigninForm />
     </div>
   );

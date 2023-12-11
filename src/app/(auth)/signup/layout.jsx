@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'GYMAI-Signup',
+  title: 'Signup',
   description: 'Register Users',
 }
 
