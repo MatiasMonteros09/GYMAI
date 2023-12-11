@@ -1,22 +1,14 @@
-"use client"
-import Navbar from "./Navbar";
-import {RiMenuFill} from 'react-icons/ri'
+import Navbar from "./Navbar/Navbar";
 
 const Header = () => {
   return (
-   <>
-     <header className="bg-appOrange fixed top-0 left-0 w-full p-2 mx-auto ">
-        <div className="flex items-center justify-between ">
-          {/* <section>Logo</section> */}
-          <section ><Navbar/></section>
-          {/* <section className="md:hidden">
-            <button type="button">
-            <RiMenuFill size={24}/>
-            </button>
-          </section> */}
-        </div>
-    </header>
-   </>
+    <>
+      <header className=" fixed top-0  left-0 w-full p-2 mx-auto z-50 ">
+          <section>
+            <Navbar />
+          </section>
+      </header>
+    </>
   );
 };
 export default Header;
