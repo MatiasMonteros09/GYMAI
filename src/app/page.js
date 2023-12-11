@@ -1,10 +1,11 @@
 import Link from "next/link";
+import HomePage from "@/components/HomePage";
 
-const HomePage = () => {
+const Home = () => {
   return (
-    <div>
-     <h1>Home Page</h1>
-    </div>
+    <>
+      <HomePage/>
+    </>
   );
 };
-export default HomePage;
+export default Home;

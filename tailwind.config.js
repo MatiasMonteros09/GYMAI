@@ -16,9 +16,10 @@ module.exports = {
       colors: {
         appOrange: '#ed3900',
         appOrangeButton:'#ed4030',
-        appOrangeButtonHover:'#ed4050',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 }

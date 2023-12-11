@@ -1,10 +1,21 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
+
 import { Toaster, toast } from "react-hot-toast";
+import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
+
 
 const SignupForm = () => {
+  // const session = useSession();
+
+  // if (session) {
+  //   redirect("/create");
+  // }
+
+
   const {
     register,
     handleSubmit,
@@ -15,14 +26,10 @@ const SignupForm = () => {
 
   const router = useRouter();
 
-  // console.log(errors);
 
   const onSubmit = handleSubmit(async (data) => {
     const { email, username, password } = data;
 
-    // if (data.password == !data.confirmPassword) {
-    //   return alert("Paswords do not match");
-    // }
 
     const res = await fetch("api/signup", {
       method: "POST",
@@ -38,16 +45,29 @@ const SignupForm = () => {
 
     const result = await res.json();
 
+
+    //Realiza un SignIn success
+    await signIn("credentials", {
+      email: result.user.email,
+      password,
+      redirect: false,
+    });
+
+
     res.ok
       ? (toast.success(result.message),
         reset(),
         "continue.html",
-        router.push("/authview"))
+
+        router.push("/create"))
+
       : toast.error(result.message);
   });
 
   return (
+
     <div className="bg-no-repeat bg-[url('/gymai.jpg')]  bg-center bg-cover">
+
       <div className=" mx-2 min-h-screen lg:flex lg:justify-center lg:items-center mt-2 ">
         <form className="md:w-1/4" onSubmit={onSubmit}>
           <h1 className="text-center text-zinc-50 text-3xl mb-4 font-extrabold  p-0 animate-wiggle-more animate-infinite drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
@@ -160,17 +180,16 @@ const SignupForm = () => {
             Register
           </button>
 
-          <Link
-            href="/"
-            className=" bg-appOrangeButton hover:bg-gray-700 rounded-lg text-2xl px-6 font-semibold"
-          >
-            Back
-          </Link>
+
         </form>
 
         <Toaster />
       </div>
+
     </div>
+
+ 
+
   );
 };
 export default SignupForm;
