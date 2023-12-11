@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 const Signup = async () => {
   const session = await getServerSession(authOptions);
 
+
   if (session) {
     redirect("/create");
   }
@@ -20,5 +21,6 @@ const Signup = async () => {
       <SignupForm />
     </section>
   );
+
 };
 export default Signup;
