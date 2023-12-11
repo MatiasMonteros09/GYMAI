@@ -63,7 +63,7 @@ res.ok
 
 return (
 
-  <div className=" mx-2  min-h-screen lg:flex justify-center items-center mt-2 ">
+  <div className=" mx-2 mt-20 lg:-mt-10 min-h-screen lg:flex justify-center items-center">
     <form  onSubmit={onSubmit}>
       <h1 className="text-center text-zinc-50 text-3xl mb-4 font-extrabold  p-0 animate-wiggle-more animate-infinite drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
         Register

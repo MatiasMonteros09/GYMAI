@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} bg-slate-800 text-zinc-50`}>
         <Providers>
           <Header />
+          
           {children}
         </Providers>
       </body>
