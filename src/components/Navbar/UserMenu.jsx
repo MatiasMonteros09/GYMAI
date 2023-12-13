@@ -5,11 +5,11 @@ import { usePathname } from "next/navigation";
 
 const LINKS = [
   {
-    name: "Download Plan",
+    name: "Download",
     path: "/downloadview",
   },
   {
-    name: "Create Plan",
+    name: "Create",
     path: "/create",
   },
   {

@@ -10,6 +10,7 @@ const Header = () => {
           <section>
             <Navbar />
           </section>
+      </div>
       </header>
     </>
   );

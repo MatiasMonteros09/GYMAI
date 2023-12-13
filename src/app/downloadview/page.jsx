@@ -1,3 +1,6 @@
+
+
+
 "use client";
 
 import { BsFiletypePdf } from "react-icons/bs";
@@ -15,7 +18,7 @@ import PdfFile from "@/components/PdfFile";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 // import AnimatedBackground from "@/components/AnimatedBackground";
 import "@/app/downloadview/style.css"
-import Header from "@/components/Header";
+// import Header from "@/components/Header";
 const Downloadview = () => {
   const { selectedValues } = useStore();
 
@@ -70,7 +73,7 @@ const Downloadview = () => {
 
   return (
     <div className="container-bg">
-      <Header/>
+      {/* <Header/> */}
       <div className="containerTwo">
         <h1 className="text-center text-zinc-50 text-xl mb-10 font-extrabold flex">
           <p> GYM</p>
