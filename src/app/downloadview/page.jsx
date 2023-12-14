@@ -80,7 +80,7 @@ const Downloadview = () => {
           <p className="text-appOrange">AI</p>
         </h1>
 
-        <div>
+        <div className="justify-center text-center">
           <h1 className="font-extrabold text-xl text-zinc-50">MAKE THIS PLAN</h1>
 
           <div>
@@ -115,10 +115,10 @@ const Downloadview = () => {
         <div className="flex">
           <PDFDownloadLink document={<PdfFile respuesta={respuesta} />} filename="FORM">
             {({ loading }) =>
-              loading ? <button>Loading Document...</button> : <button>Download</button>
+              loading ? <button>Loading Document...</button> : <button className="text-white">Download</button>
             }
           </PDFDownloadLink>
-          <BsFiletypePdf style={{ fontSize: '40px' }} />
+          <BsFiletypePdf style={{ fontSize: '40px'}}  />
         </div>
       </div>
 
