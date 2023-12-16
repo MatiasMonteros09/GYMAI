@@ -6,6 +6,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
 
 const SignupForm = () => {
+
   const {
     register,
     handleSubmit,
@@ -162,5 +163,6 @@ const SignupForm = () => {
       <Toaster />
     </div>
   );
+
 };
 export default SignupForm;

@@ -1,7 +1,10 @@
+
+
+
 "use client";
 
 import { BsFiletypePdf } from "react-icons/bs";
-import "./page.css";
+
 import { useSession } from "next-auth/react";
 import useStore from "@/app/store/selectroutine";
 
@@ -13,7 +16,9 @@ import Spinner from "react-bootstrap/Spinner"; // Importa el componente Spinner
 import "bootstrap/dist/css/bootstrap.min.css";
 import PdfFile from "@/components/PdfFile";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-
+// import AnimatedBackground from "@/components/AnimatedBackground";
+import "@/app/downloadview/style.css"
+// import Header from "@/components/Header";
 const Downloadview = () => {
   const { selectedValues } = useStore();
 
@@ -67,59 +72,59 @@ const Downloadview = () => {
   }, [selectedValues]);
 
   return (
-    <div className="h-screen mx-5 flex flex-col justify-center items-center">
-      <h1 className="text-center text-zinc-50 text-xl mb-10 font-extrabold">
-        AWESOME!
-      </h1>
-      <h1 className="text-center text-zinc-50 text-xl mb-10 font-extrabold flex">
-        <p> GYM</p>
-        <p className="text-appOrange">AI</p>
-      </h1>
+    <div className="container-bg">
+      {/* <Header/> */}
+      <div className="containerTwo">
+        <h1 className="text-center text-zinc-50 text-xl mb-10 font-extrabold flex">
+          <p> GYM</p>
+          <p className="text-appOrange">AI</p>
+        </h1>
 
-      <div className=" w-screen plan-container bg-appOrange px-5  mb-20 flex flex-col justify-around items-center">
-        <h1 className="font-extrabold text-xl text-zinc-50">MAKE THIS PLAN</h1>
+        <div className="justify-center text-center">
+          <h1 className="font-extrabold text-xl text-zinc-50">MAKE THIS PLAN</h1>
 
-        <div>
-          <Button variant="secondary" onClick={handleShow}>
-            Routine
-          </Button>
+          <div>
+            <Button variant="secondary" onClick={handleShow}>
+              Routine
+            </Button>
 
-          <Modal className="text-black" show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Making the best routine 4U</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {loading ? ( // Muestra el spinner mientras se carga
-                <Spinner animation="border" role="status">
-                  <span className="text-black visually-hidden">Loading...</span>
-                </Spinner>
-              ) : (
-                <p>Routine: {respuesta}</p>
-              )}
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
+            <Modal className="text-black" show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Making the best routine 4U</Modal.Title>
+              </Modal.Header>
+              <Modal.Body className="justify-center text-center">
+                {loading ? (
+                  <Spinner animation="border" role="status">
+                    <span className="text-black visually-hidden">Loading...</span>
+                  </Spinner>
+                ) : (
+                  <p>Routine: {respuesta}</p>
+                )}
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
+
+          <h1 className="font-extrabold text-xl text-slate-800">FOR YOU</h1>
         </div>
 
-        <h1 className="font-extrabold text-xl text-slate-800">FOR YOU</h1>
+        <div className="flex">
+          <PDFDownloadLink document={<PdfFile respuesta={respuesta} />} filename="FORM">
+            {({ loading }) =>
+              loading ? <button>Loading Document...</button> : <button className="text-white">Download</button>
+            }
+          </PDFDownloadLink>
+          <BsFiletypePdf style={{ fontSize: '40px'}}  />
+        </div>
       </div>
 
-      <div className="rounded-lg bg-appOrange p-5 mb-5 flex justify-center items-center">
-        <PDFDownloadLink document={<PdfFile respuesta={respuesta} />} filename="FORM">
-          {({ loading }) =>
-            loading ? (
-              <button>Loading Document...</button>
-            ) : (
-              <button>Download</button>
-            )
-          }
-        </PDFDownloadLink>
-        <BsFiletypePdf style={{ fontSize: "40px" }} />
-      </div>
+      <div className="bg-animated"></div>
+      <div className="bg-animated bg2-animated"></div>
+      <div className="bg-animated bg3-animated"></div>
     </div>
   );
 };
