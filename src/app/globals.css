@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 body{
     min-height: 100svh;
     box-sizing: border-box;
