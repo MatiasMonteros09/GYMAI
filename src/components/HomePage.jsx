@@ -11,7 +11,7 @@ const HomePage = () => {
       </div>
 
       <div className="mt-8 space-y-4 w-full flex items-center justify-center">
-        <Link href="/signin" className="bg-appOrange text-gray-50 text-xl font-semibold px-6 py-2 rounded-xl ">
+        <Link href="/signin" className="text-zinc-50 text-2xl px-6 py-4 mb-4 mt-3 font-semibold rounded-lg bg-appOrangeButton hover:shadow-inner transform hover:scale-110 hover:bg-opacity-50 transition ease-out duration-300">
             Get Started
         </Link>
       </div>
