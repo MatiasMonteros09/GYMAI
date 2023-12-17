@@ -30,8 +30,7 @@ const Downloadview = () => {
   const { data: session } = useSession();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true); // Nuevo estado para manejar la carga
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+ 
 
   const sendResponseToPrisma = async (data) => {
     try {
@@ -90,38 +89,13 @@ const Downloadview = () => {
           <h1 className="font-extrabold text-xl text-zinc-50">
             MAKE THIS PLAN
           </h1>
-
-          <div>
-            {/* <Button variant="secondary" onClick={handleShow}>
-              Routine
-            </Button>
-
-            <Modal className="text-black" show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <Modal.Title>Making the best routine 4U</Modal.Title>
-              </Modal.Header>
-              <Modal.Body className="justify-center text-center">
-                {loading ? (
-                  <Spinner animation="border" role="status">
-                    <span className="text-black visually-hidden">
-                      Loading...
-                    </span>
-                  </Spinner>
-                ) : (
-                  <p>Routine: {respuesta}</p>
-                )}
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-              </Modal.Footer>
-            </Modal> */}
-            {/* /////////////////////////////////////////// */}
+            <div>
+ 
             <button
               onClick={() => {
                 setOpen(true);
               }}
+              className="text-zinc-50 text-2xl px-6 py-4 mb-4 mt-3 font-semibold rounded-lg bg-appOrangeButton hover:shadow-inner transform hover:scale-110 hover:bg-opacity-50 transition ease-out duration-300"
             >
               Routine
             </button>
@@ -204,10 +178,9 @@ const Downloadview = () => {
                 </div>
               </Dialog>
             </Transition.Root>
-            {/* /////////////////////////////////////////// */}
           </div>
 
-          <h1 className="font-extrabold text-xl text-slate-800">FOR YOU</h1>
+          <h1 className="font-extrabold text-xl text-slate-400">FOR YOU</h1>
         </div>
 
         <div className="flex">
