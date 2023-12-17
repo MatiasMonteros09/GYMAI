@@ -31,6 +31,7 @@ const SigninForm = () => {
 
     res.ok
       ? (toast.success("Welcome!!"),
+
         reset(),
         "continue.html",
         router.push("/create"),

@@ -5,7 +5,5 @@ const ResultCard = ({ result }) => {
     <div className="pt-1">
         <Date dateString={result.init} />
     </div>
-  );
-};
 
 export default ResultCard;
