@@ -1,17 +1,15 @@
 # GymAI Web App
 
-Welcome to GymAI, a web application for creating and managing workout plans.
+Welcome to GYMAI, a web application for creating and managing workout plans.
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+- [Introduction](#introduction "Introduction")
+- [Features](#features "Features")
+- [Getting Started](#getting-started "Fetting-Started")
+  - [Prerequisites](#prerequisites "Pre-Requisites")
+  - [Installation](#installation "Installation")
+- [Usage](#usage "Usage")
+- [Technologies Used](#technologies-used "Technologies-Used")
 
 ## Introduction
 
@@ -24,7 +22,7 @@ GymAI is a web application designed to help users create and manage personalized
 - Downloadable workout plans
 - ...
 
-## Getting Started
+> ## Getting Started
 
 ### Prerequisites
 
@@ -59,3 +57,11 @@ Open your browser and navigate to http://localhost:3000.
 - Next.js
 - React
 - NextAuth.js
+
+## Mockup
+
+[figma.com](https://www.figma.com/file/a1bpE605ebtY20vJ7l8JEb/GYM-AI?type=design&node-id=0-1&mode=design&t=Iu1K13cu2QPsgbSj-0 "Figma")
+
+![diseño](mockup.png)
+
+

@@ -22,7 +22,6 @@ const SigninForm = () => {
     reset,
   } = useForm();
 
-
   const onSubmit = handleSubmit(async (data) => {
     const res = await signIn("credentials", {
       email: data.name,
@@ -31,7 +30,8 @@ const SigninForm = () => {
     });
 
     res.ok
-      ? (toast.success(res.message),
+      ? (toast.success("Welcome!!"),
+
         reset(),
         "continue.html",
         router.push("/create"),
@@ -39,40 +39,38 @@ const SigninForm = () => {
       : toast.error(res.error);
   });
   return (
-    <div className="h-screen mx-5 flex flex-col justify-center items-center ">
+    <div className="min-h-screen mx-5 flex flex-col justify-center items-center ">
       <h1 className="text-center text-zinc-50 text-xl mb-10 font-extrabold">
         NICE TO SEE YOU!
       </h1>
       <form onSubmit={onSubmit}>
-        <div className="rounded-lg bg-appOrange p-5 mb-5 flex">
-          <label className="mx-4 font-bold">Email</label>
-          <input
-            className="w-3/5 rounded-lg text-slate-800"
-            type="email"
-            {...register("name", {
-              required: {
-                value: true,
-                message: "Name is required",
-              },
-            })}
-          />
+        <div className="rounded-lg bg-appOrange p-3 mb-3">
+          <label>
+            <p className="m-0">Email </p>
+            <input
+              className="w-full p-1 lg:text-2xl font-semibold rounded-md text-slate-950 "
+              type="text"
+              {...register("name")}
+              autoFocus
+              placeholder="user@email.com"
+            />
+          </label>
         </div>
-        <div className="rounded-lg bg-appOrange p-5 mb-20 flex">
-          <label className="mx-4 font-bold">Password</label>
-          <input
-            className="w-3/5 rounded-lg text-slate-800"
-            type="password"
-            {...register("password", {
-              required: {
-                value: true,
-                message: "Password is required",
-              },
-            })}
-          />
+
+        <div className="rounded-lg bg-appOrange p-3 mb-3">
+          <label>
+            <p className="m-0">Password</p>
+            <input
+              className="w-full p-1  lg:text-2xl font-semibold rounded-md text-slate-800"
+              type="password"
+              {...register("password")}
+              placeholder="********"
+            />
+          </label>
         </div>
-        <div className="rounded-lg bg-appOrange p-8 mb-5 flex justify-center items-center">
-          <button className="text-zinc-50 text-3xl font-semibold">Login</button>
-        </div>
+        <button className="w-full text-zinc-50 text-2xl p-1  mb-4 mt-3 font-semibold rounded-lg bg-appOrangeButton hover:shadow-inner transform hover:scale-110 hover:bg-opacity-50 transition ease-out duration-300">
+          Login
+        </button>
       </form>
       <Toaster />
     </div>
