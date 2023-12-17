@@ -10,11 +10,9 @@ const HomePage = () => {
         <p className="text-base md:text-lg mb-4">Your Personalized Workout Planning Tool</p>
       </div>
 
-      <div className="mt-8 space-y-4 w-full">
-        <Link href="/authview">
-          <button className="bg-appOrange text-gray-50 text-xl font-semibold px-6 py-2 rounded-full w-full">
+      <div className="mt-8 space-y-4 w-full flex items-center justify-center">
+        <Link href="/signin" className="bg-appOrange text-gray-50 text-xl font-semibold px-6 py-2 rounded-xl ">
             Get Started
-          </button>
         </Link>
       </div>
     </div>
