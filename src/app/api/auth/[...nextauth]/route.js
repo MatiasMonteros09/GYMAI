@@ -53,6 +53,7 @@ export const authOptions = {
 
     async session({ session, token }) {
       session.user = token.user;
+
       return session;
       // return NextResponse.json(
       // { session, message: "Successful registration" },

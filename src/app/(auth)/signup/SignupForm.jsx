@@ -51,11 +51,11 @@ const SignupForm = () => {
 
   return (
     <div className="  md:mt-20  mx-5 flex flex-col justify-center items-center ">
-     <h1 className="text-center text-zinc-50 text-3xl mb-5 md:mt-10  font-extrabold  ">
-          Register
-        </h1>
+      <h1 className="text-center text-zinc-50 text-3xl mb-5 md:mt-10  font-extrabold  ">
+        Register
+      </h1>
       <form onSubmit={onSubmit}>
-       
+
         <div className="rounded-lg bg-appOrange p-3 mb-3">
           <label>
             <p className="m-0">Email </p>
