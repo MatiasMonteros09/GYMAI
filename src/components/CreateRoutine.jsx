@@ -87,7 +87,7 @@ const InputView = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-900 text-white">
       <div className="text-center mb-6">
-        <h1 className="text-zinc-50 text-xl font-extrabold">CREATE YOUR PLAN</h1>
+        <h1 className="text-zinc-50 text-xl font-extrabold mb-4">CREATE YOUR PLAN</h1>
         <div className="bg-appOrange px-4 py-2 rounded-full">Select your options</div>
       </div>
       <form className="w-4/5 max-w-md" onSubmit={handleSubmit}>
@@ -110,7 +110,7 @@ const InputView = () => {
           />
         </div>
         <div className="flex justify-center items-center">
-          <button className="rounded-full bg-appOrange text-gray-50 text-3xl font-semibold px-6 py-2" type="submit">
+          <button className="text-zinc-50 text-2xl px-6 py-4 mb-4 mt-3 font-semibold rounded-lg bg-appOrangeButton hover:shadow-inner transform hover:scale-110 hover:bg-opacity-50 transition ease-out duration-300" type="submit">
             Submit
           </button>
         </div>
